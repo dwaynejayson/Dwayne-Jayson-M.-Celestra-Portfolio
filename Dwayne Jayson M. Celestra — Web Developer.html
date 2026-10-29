@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dwayne Jayson M. Celestra — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Outfit:wght@400;500;600&display=swap">
+<style>
+:root{
+  --night:#17142e; --dusk:#221e45; --rune:#e3b04b; --mist:#5fd1c4; --parch:#f2e9d3; --dim:#a9a3c4; --line:rgba(242,233,211,.14);
+  --display:'Fraunces',Georgia,serif; --body:'Outfit',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--night);color:var(--parch);font:400 1.05rem/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--mist);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:.6rem}
+section{padding:4.5rem 0;border-top:1px solid var(--line)}
+.lead{color:var(--dim);max-width:60ch;margin:0 0 2.2rem}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none}
+nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;color:var(--dim)}
+nav ul a:hover{color:var(--rune)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding:3.5rem 0 5rem}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--dim);max-width:46ch;margin:1.4rem 0 2rem;font-size:1.15rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--rune);cursor:pointer;font:600 1rem var(--body)}
+.btn.fill{background:var(--rune);color:var(--night)}
+.btn.fill:hover{background:var(--parch);border-color:var(--parch)}
+.btn.ghost{background:none;color:var(--parch)}
+.btn.ghost:hover{background:rgba(227,176,75,.12)}
+
+/* live event card */
+.event{background:linear-gradient(160deg,var(--dusk),#2c2660);border:1px solid var(--line);border-radius:22px;padding:1.6rem;position:relative;overflow:hidden;animation:rise .9s ease both}
+.event::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(95,209,196,.35),transparent 70%)}
+.event small{color:var(--mist);font-weight:600}
+.event h3{font-size:1.7rem;margin:.4rem 0 1.2rem}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;position:relative;z-index:1}
+.clock div{background:rgba(23,20,46,.7);border:1px solid var(--line);border-radius:14px;text-align:center;padding:.7rem 0}
+.clock b{display:block;font:800 1.9rem var(--display);color:var(--rune)}
+.clock span{font-size:.8rem;color:var(--dim)}
+.event p{font-size:.9rem;margin:1.1rem 0 0;color:var(--dim)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.tech{padding:1.5rem;border-radius:18px;background:var(--dusk);border-left:4px solid var(--c)}
+.tech h3{font-size:1.5rem;margin-bottom:.5rem}
+.tech p{margin:0 0 1rem;color:var(--dim);font-size:.98rem}
+.tech ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.tech li{margin:.2rem 0}
+
+/* projects */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.tab{background:none;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;font:500 .95rem var(--body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--parch);color:var(--night);border-color:var(--parch)}
+.proj{display:none;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
+.proj.on{display:grid}
+.shot{border-radius:18px;border:1px solid var(--line);background:var(--dusk);padding:1.1rem;min-height:250px;display:flex;flex-direction:column;gap:.6rem}
+.shot i{display:block;border-radius:8px;background:rgba(242,233,211,.1)}
+.shot .bar{height:14px;width:35%}
+.shot .big{height:84px;background:linear-gradient(120deg,var(--c1),var(--c2));opacity:.9}
+.shot .row{display:flex;gap:.6rem;flex:1}
+.shot .row i{flex:1;min-height:60px}
+.proj h3{font-size:1.6rem;margin-bottom:.6rem}
+.proj p{color:var(--dim);margin:0 0 1rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;padding:0;list-style:none;margin:0 0 1rem}
+.tags li{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.15rem .75rem}
+.note{font-size:.9rem;color:var(--rune)}
+
+/* standards */
+.std{display:grid;grid-template-columns:repeat(2,1fr);gap:0 3rem}
+.std div{padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.std h3{font-size:1.2rem;margin-bottom:.25rem;color:var(--mist)}
+.std p{margin:0;color:var(--dim)}
+
+/* contact */
+.msg{background:var(--dusk);border:1px solid var(--line);border-radius:18px;padding:1.4rem;white-space:pre-wrap;font-size:.98rem;margin:0 0 1.2rem}
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--dim);font-size:.9rem}
+
+@media(max-width:820px){
+  .hero,.proj.on{grid-template-columns:1fr}
+  .stack,.std{grid-template-columns:1fr}
+  .hero{gap:2.2rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">Dwayne Jayson M. Celestra</a>
+    <ul>
+      <li><a href="#stack">Tech stack</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#standards">How I build</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>I build fast, good-looking pages for your launches and events.</h1>
+      <p>Hi, I’m Dwayne Jayson M. Celestra, a web developer for public-facing sites: landing pages, event pages and campaign microsites. Built with Next.js, Astro and Flutter, responsive on every screen.</p>
+      <div class="btns">
+        <a class="btn fill" href="#contact">Apply to ROS Reborn</a>
+        <a class="btn ghost" href="#work">See sample work</a>
+      </div>
+    </div>
+    <aside class="event" aria-label="Live countdown demo">
+      <small>Live demo: event page component</small>
+      <h3>Grand Reopening</h3>
+      <div class="clock" id="clock">
+        <div><b id="d">00</b><span>days</span></div>
+        <div><b id="h">00</b><span>hours</span></div>
+        <div><b id="m">00</b><span>mins</span></div>
+        <div><b id="s">00</b><span>secs</span></div>
+      </div>
+      <p>This countdown is the kind of block I would ship for your next announcement. It is plain HTML, CSS and a few lines of JS, so it loads instantly.</p>
+    </aside>
+  </header>
+</div>
+
+<section id="stack"><div class="wrap">
+  <h2>Tech stack</h2>
+  <p class="lead">The three tools you listed, and what I use each one for.</p>
+  <div class="stack">
+    <div class="tech" style="--c:var(--parch)">
+      <h3>Next.js</h3>
+      <p>For event hubs and campaign sites that need dynamic content.</p>
+      <ul><li>App Router, server components</li><li>Image and font optimization</li><li>SEO and social share cards</li></ul>
+    </div>
+    <div class="tech" style="--c:var(--rune)">
+      <h3>Astro</h3>
+      <p>For landing pages and announcements that should load almost instantly.</p>
+      <ul><li>Ships near-zero JavaScript</li><li>Content collections for news posts</li><li>Islands for small interactive parts</li></ul>
+    </div>
+    <div class="tech" style="--c:var(--mist)">
+      <h3>Flutter</h3>
+      <p>For web apps and companion tools that need app-like interaction.</p>
+      <ul><li>One codebase for web and mobile</li><li>Smooth animations</li><li>Responsive layouts</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>Selected work</h2>
+  <p class="lead">Replace these with your own projects and live links before sending.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-i="0">Event page</button>
+    <button class="tab" role="tab" aria-selected="false" data-i="1">Landing page</button>
+    <button class="tab" role="tab" aria-selected="false" data-i="2">Announcement hub</button>
+  </div>
+
+  <article class="proj on" style="--c1:#e3b04b;--c2:#c76b4a">
+    <div class="shot" aria-hidden="true"><i class="bar"></i><i class="big"></i><div class="row"><i></i><i></i><i></i></div></div>
+    <div>
+      <h3>Event page with countdown and schedule</h3>
+      <p>A single page for a launch or in-game event: countdown, schedule, rewards and a clear call to action. Reads well on a phone, since most players open links from chat.</p>
+      <ul class="tags"><li>Astro</li><li>Tailwind</li><li>Vanilla JS</li></ul>
+      <span class="note">Add: live link · GitHub link</span>
+    </div>
+  </article>
+
+  <article class="proj" style="--c1:#5fd1c4;--c2:#4a6fc7">
+    <div class="shot" aria-hidden="true"><i class="bar"></i><i class="big"></i><div class="row"><i></i><i></i></div></div>
+    <div>
+      <h3>Promotional landing page</h3>
+      <p>A one-scroll page that explains the server, shows features and sends visitors to download or join the Discord. Built for fast loading and a clean first impression.</p>
+      <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Framer Motion</li></ul>
+      <span class="note">Add: live link · GitHub link</span>
+    </div>
+  </article>
+
+  <article class="proj" style="--c1:#9a7be0;--c2:#e3b04b">
+    <div class="shot" aria-hidden="true"><i class="bar"></i><div class="row"><i></i><i></i></div><div class="row"><i></i><i></i></div></div>
+    <div>
+      <h3>Announcement and patch notes hub</h3>
+      <p>A news section where the team writes posts in Markdown and the site builds the pages. No code changes needed to publish an update.</p>
+      <ul class="tags"><li>Astro</li><li>Markdown</li><li>RSS</li></ul>
+      <span class="note">Add: live link · GitHub link</span>
+    </div>
+  </article>
+</div></section>
+
+<section id="standards"><div class="wrap">
+  <h2>How I build</h2>
+  <p class="lead">What you asked for in the post, as habits.</p>
+  <div class="std">
+    <div><h3>Responsive first</h3><p>I design for the phone screen, then scale up to tablet and desktop.</p></div>
+    <div><h3>Performance</h3><p>Compressed images, minimal JavaScript, and a Lighthouse check before every handoff.</p></div>
+    <div><h3>Clean, maintainable code</h3><p>Reusable components and clear naming, so another dev can pick it up without a call.</p></div>
+    <div><h3>Team-friendly</h3><p>I take feedback from your GFX and social media team and turn their art into live pages. I only need public assets, nothing confidential.</p></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Let’s build your next page</h2>
+  <p class="lead">Here is the message I would send to the ROS Reborn team. Copy it, then edit the brackets.</p>
+  <pre class="msg" id="msg">Hi! I’m Dwayne Jayson M. Celestra, applying for the Web Developer role.
+
+Portfolio: [your portfolio link]
+Preferred tech stack: Next.js, Astro, Flutter
+Experience: [years or projects, e.g. built event pages and landing pages for ...]
+
+I can build landing pages, event pages and announcements that are fast and responsive. Happy to share more examples.
+
+Thank you!</pre>
+  <div class="btns">
+    <button class="btn fill" id="copy">Copy message</button>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Dwayne Jayson M. Celestra. Built with HTML, CSS and a little JavaScript.</div></footer>
+
+<script>
+(function(){
+  // countdown: 14 days from first visit of this page load
+  var end=Date.now()+14*864e5+3*36e5;
+  function p(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var t=Math.max(0,end-Date.now());
+    document.getElementById('d').textContent=p(Math.floor(t/864e5));
+    document.getElementById('h').textContent=p(Math.floor(t%864e5/36e5));
+    document.getElementById('m').textContent=p(Math.floor(t%36e5/6e4));
+    document.getElementById('s').textContent=p(Math.floor(t%6e4/1e3));
+  }
+  tick(); setInterval(tick,1000);
+
+  var tabs=document.querySelectorAll('.tab'),projs=document.querySelectorAll('.proj');
+  tabs.forEach(function(b){b.addEventListener('click',function(){
+    var i=+b.dataset.i;
+    tabs.forEach(function(x,j){x.setAttribute('aria-selected',j===i)});
+    projs.forEach(function(x,j){x.classList.toggle('on',j===i)});
+  })});
+
+  var c=document.getElementById('copy');
+  c.addEventListener('click',function(){
+    var t=document.getElementById('msg').textContent;
+    function done(){c.textContent='Copied';setTimeout(function(){c.textContent='Copy message'},1800)}
+    try{navigator.clipboard.writeText(t).then(done,done)}catch(e){done()}
+  });
+})();
+</script>
+</body>
+</html>
